@@ -2,7 +2,15 @@
   "name": "xero-sdk",
   "version": "1.0.0",
   "description": "Production-grade, dependency-free TypeScript SDK for the entire Xero API platform: Accounting, Assets, Files, Projects, Bank Feeds, Finance, Practice Manager, App Store, eInvoicing, and Payroll (AU/NZ/UK).",
-  "keywords": ["xero", "accounting", "payroll", "api", "sdk", "typescript", "oauth2"],
+  "keywords": [
+    "xero",
+    "accounting",
+    "payroll",
+    "api",
+    "sdk",
+    "typescript",
+    "oauth2"
+  ],
   "author": "iamkanishka",
   "license": "MIT",
   "homepage": "https://github.com/iamkanishka/xero-sdk#readme",
@@ -50,7 +58,7 @@
     "size": "npm run build && node -e \"console.log((require('fs').statSync('dist/index.js').size/1024).toFixed(1)+' KB (ESM, unminified)')\""
   },
   "devDependencies": {
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.20.1",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
     "@vitest/coverage-v8": "^2.1.8",
