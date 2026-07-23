@@ -5,14 +5,25 @@
  *
  * Run with: npx tsx examples/streaming/index.ts
  */
-import { XeroClient, FileTokenStore, forEachPage, type XeroObserver, type RequestEvent, type RateLimitEvent } from "../../src/index.js";
+import {
+  XeroClient,
+  FileTokenStore,
+  forEachPage,
+  type XeroObserver,
+  type RequestEvent,
+  type RateLimitEvent,
+} from "../../src/index.js";
 
 const logObserver: XeroObserver = {
   onRequest(e: RequestEvent) {
-    console.log(`[xero] ${e.method} ${e.path} -> ${e.status} in ${e.durationMs.toFixed(0)}ms (attempt ${e.attempt})`);
+    console.log(
+      `[xero] ${e.method} ${e.path} -> ${e.status} in ${e.durationMs.toFixed(0)}ms (attempt ${e.attempt})`,
+    );
   },
   onRateLimit(e: RateLimitEvent) {
-    console.log(`[xero] tenant=${e.tenantId} day-remaining=${e.dayRemaining} min-remaining=${e.minRemaining}`);
+    console.log(
+      `[xero] tenant=${e.tenantId} day-remaining=${e.dayRemaining} min-remaining=${e.minRemaining}`,
+    );
   },
   onTokenRefreshed(key: string) {
     console.log(`[xero] token refreshed: ${key}`);

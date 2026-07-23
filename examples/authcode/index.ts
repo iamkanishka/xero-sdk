@@ -14,7 +14,12 @@ async function main(): Promise<void> {
     clientId: process.env.XERO_CLIENT_ID!,
     clientSecret: process.env.XERO_CLIENT_SECRET,
     redirectUri: "http://localhost:8080/callback",
-    scopes: ["offline_access", "accounting.transactions", "accounting.contacts", "accounting.settings"],
+    scopes: [
+      "offline_access",
+      "accounting.transactions",
+      "accounting.contacts",
+      "accounting.settings",
+    ],
   });
 
   const pkce = await generatePkce();

@@ -24,14 +24,18 @@ async function main(): Promise<void> {
   const invoice = await client.accounting.invoices.create(token, tenantId, {
     Type: "ACCREC",
     Contact: { Name: "Acme Widgets Ltd" },
-    LineItems: [{ Description: "Consulting services", Quantity: 1, UnitAmount: 500, AccountCode: "200" }],
+    LineItems: [
+      { Description: "Consulting services", Quantity: 1, UnitAmount: 500, AccountCode: "200" },
+    ],
     Status: "DRAFT",
   });
   console.log(`Created invoice ${invoice.InvoiceID} (${invoice.InvoiceNumber})`);
 
   // Stream every AUTHORISED invoice without loading them all into memory at once.
   let count = 0;
-  for await (const inv of client.accounting.invoices.stream(token, tenantId, { where: 'Status=="AUTHORISED"' })) {
+  for await (const inv of client.accounting.invoices.stream(token, tenantId, {
+    where: 'Status=="AUTHORISED"',
+  })) {
     if (inv.InvoiceID) count++;
   }
   console.log(`Total AUTHORISED invoices: ${count}`);
