@@ -1,0 +1,68 @@
+{
+  "name": "xero-sdk",
+  "version": "1.0.0",
+  "description": "Production-grade, dependency-free TypeScript SDK for the entire Xero API platform: Accounting, Assets, Files, Projects, Bank Feeds, Finance, Practice Manager, App Store, eInvoicing, and Payroll (AU/NZ/UK).",
+  "keywords": ["xero", "accounting", "payroll", "api", "sdk", "typescript", "oauth2"],
+  "author": "iamkanishka",
+  "license": "MIT",
+  "homepage": "https://github.com/iamkanishka/xero-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamkanishka/xero-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamkanishka/xero-sdk/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
+    "lint": "eslint src test examples --ext .ts",
+    "lint:fix": "eslint src test examples --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"examples/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "size": "npm run build && node -e \"console.log((require('fs').statSync('dist/index.js').size/1024).toFixed(1)+' KB (ESM, unminified)')\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
